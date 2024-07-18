@@ -13,21 +13,20 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
+    - name: Checkout
+      uses: actions/checkout@v4
 
     - name: Login to docker.io registry
-      uses: docker/login-action@v1
+      uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKERHUB_USER }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build image and push to Docker Hub 
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v5
       with:
         context: .
         tags: |
-          aquasec/trivy-pipe:latest 
-          aquasec/trivy-pipe:${{github.ref_name}}
+          wollomatic/trivy-pipe:latest 
+          wollomatic/trivy-pipe:${{github.ref_name}}
         push: true
