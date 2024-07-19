@@ -20,10 +20,6 @@ variables:
     description: 'Scan reference'
     required: false
     default: '.'
-  - name: exitCode
-    description: 'exit code when vulnerabilities were found'
-    required: false
-    default: '0'
   - name: ignoreUnfixed
     description: 'ignore unfixed vulnerabilities'
     required: false

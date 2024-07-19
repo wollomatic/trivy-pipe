@@ -27,9 +27,6 @@ fi
 if [ $template ] ;then
  ARGS="$ARGS --template $template"
 fi
-if [ $exitCode ];then
- ARGS="$ARGS --exit-code $exitCode"
-fi
 if [ "$ignoreUnfixed" == "true" ] && [ "$scanType" != "config" ];then
   ARGS="$ARGS --ignore-unfixed"
   SARIF_ARGS="$SARIF_ARGS --ignore-unfixed"
