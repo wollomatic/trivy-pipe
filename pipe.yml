@@ -69,7 +69,7 @@ variables:
     required: false
     default: true
 
-respository: https://github.com/wollomatic/trivy-pipe
+repository: https://github.com/wollomatic/trivy-pipe
 maintainer: 
   name: W. Ellsaesser
   website: https://wollomatic.de
