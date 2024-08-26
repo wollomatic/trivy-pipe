@@ -7,7 +7,7 @@ category: Security
 variables:
   - name: scanType
     description: 'Scan type to use for scanning vulnerability'
-    required: true
+    required: false
     default: 'image'
   - name: imageRef
     description: 'image reference(for backward compatibility)'

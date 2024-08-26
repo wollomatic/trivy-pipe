@@ -2,7 +2,7 @@
 
 set -e
 
-scanType=$(echo $scanType | tr -d '\r')
+scanType=$(echo ${scanType:-"image"} | tr -d '\r')
 export artifactRef="${imageRef}"
 if [ "${scanType}" = "fs" ] ||  [ "${scanType}" = "config" ];then
   artifactRef=$BITBUCKET_CLONE_DIR
