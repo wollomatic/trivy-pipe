@@ -1,13 +1,13 @@
 name: Aqua Security Trivy
 description: Scans container images for vulnerabilities with Trivy
 
-image: aquasec/trivy-pipe:latest
+image: wollomatic/trivy-pipe:latest
 category: Security
 
 variables:
   - name: scanType
     description: 'Scan type to use for scanning vulnerability'
-    required: false
+    required: true
     default: 'image'
   - name: imageRef
     description: 'image reference(for backward compatibility)'
@@ -69,11 +69,11 @@ variables:
     required: false
     default: true
 
-respository: https://github.com/aquasecurity/trivy-pipe
+respository: https://github.com/wollomatic/trivy-pipe
 maintainer: 
-  name: Aquasecurity
-  website: https://www.aquasecurity.com
-  email: contact@aquasec.com
+  name: W. Ellsaesser
+  website: https://wollomatic.de
+  email: github@wollomatic.de
 
 vendor:
   name: Aquasecurity
