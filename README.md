@@ -177,24 +177,25 @@ pipelines:
 
 Following inputs can be used as `step.with` keys:
 
-| Name             | Type    | Default                            | Description                                   |
-|------------------|---------|------------------------------------|-----------------------------------------------|
-| `scanType`      | String  | `image`                            | Scan type, e.g. `image` or `fs`|
-| `input`          | String  |                                    | Tar reference, e.g. `alpine-latest.tar` |
-| `imageRef`      | String  |                                    | Image reference, e.g. `alpine:3.10.2`         |
-| `scanRef`       | String  |                                       | Scan reference, e.g. `.`|
-| `format`         | String  | `table`                            | Output format (`table`, `json`, `template`)   |
-| `template`       | String  |                                    | Output template (`@/contrib/sarif.tpl`, `@/contrib/gitlab.tpl`, `@/contrib/junit.tpl`)|
-| `output`         | String  |                                    | Save results to a file                        |
-| `exitCode`      | String  | `0`                                | Exit code when specified vulnerabilities are found     |
-| `ignoreUnfixed` | Boolean | false                              | Ignore unpatched/unfixed vulnerabilities      |
-| `vulnType`      | String  | `os,library`                       | Vulnerability types (os,library)              |
-| `severity`       | String  | `UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL` | Severities of vulnerabilities to scanned for and displayed |
-| `skipDirs`       | String  |                                   | Comma separated list of directories where traversal is skipped |
-| `cacheDir`      | String  |                                    | Cache directory                               |
-| `timeout`        | String  | `2m0s`                             | Scan timeout duration                         |
-| `ignorePolicy`  | String  |                                    | Filter vulnerabilities with OPA rego language |
-
+| Name               | Type     | Default                            | Description                                                                            |
+|--------------------|----------|------------------------------------|----------------------------------------------------------------------------------------|
+| `scanType`         | String   | `image`                            | Scan type, e.g. `image` or `fs`                                                        |
+| `input`            | String   |                                    | Tar reference, e.g. `alpine-latest.tar`                                                |
+| `imageRef`         | String   |                                    | Image reference, e.g. `alpine:3.10.2`                                                  |
+| `scanRef`          | String   |                                    | Scan reference, e.g. `.`                                                               |
+| `format`           | String   | `table`                            | Output format (`table`, `json`, `template`)                                            |
+| `template`         | String   |                                    | Output template (`@/contrib/sarif.tpl`, `@/contrib/gitlab.tpl`, `@/contrib/junit.tpl`) |
+| `output`           | String   |                                    | Save results to a file                                                                 |
+| `exitCode`         | String   | `0`                                | Exit code when specified vulnerabilities are found                                     |
+| `ignoreUnfixed`    | Boolean  | false                              | Ignore unpatched/unfixed vulnerabilities                                               |
+| `vulnType`         | String   | `os,library`                       | Vulnerability types (os,library)                                                       |
+| `severity`         | String   | `UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL` | Severities of vulnerabilities to scanned for and displayed                             |
+| `skipDirs`         | String   |                                    | Comma separated list of directories where traversal is skipped                         |
+| `cacheDir`         | String   |                                    | Cache directory                                                                        |
+| `timeout`          | String   | `2m0s`                             | Scan timeout duration                                                                  |
+| `ignorePolicy`     | String   |                                    | Filter vulnerabilities with OPA rego language                                          |
+| `dbRepository`     | String   |                                    | vulnerability DB repository                                                            |
+| `javaDBRepository` | String   |                                    | vulnerability Java index DB repository                                                 |
 
 [license]: https://github.com/aquasecurity/trivy-pipe/blob/master/LICENSE
 [license-img]: https://img.shields.io/github/license/aquasecurity/trivy-pipe

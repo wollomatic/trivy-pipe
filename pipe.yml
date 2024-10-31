@@ -64,10 +64,18 @@ variables:
     description: 'filter vulnerabilities with OPA rego language'
     required: false
     default: ''
-  - name: hide-progress
+  - name: hideProgress
     description: 'hide progress output'
     required: false
     default: true
+  - name: dbRepository
+    description: 'vulnerability DB repository'
+    required: false
+    default: ''
+  - name: javaDBRepository
+    description: 'vulnerability Java Index DB repository'
+    required: false
+    default: ''
 
 repository: https://github.com/wollomatic/trivy-pipe
 maintainer: 

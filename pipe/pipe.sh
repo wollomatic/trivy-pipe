@@ -61,6 +61,12 @@ fi
 if [ "$hideProgress" == "true" ];then
   ARGS="$ARGS --no-progress"
 fi
+if [ $dbRepository ];then
+ ARGS="$ARGS --db-repository $dbRepository"
+fi
+if [ $JavaDBRepository ];then
+ ARGS="$ARGS --java-db-repository $JavaDBRepository"
+fi
 
 echo "Running trivy with options: ${ARGS}" "${artifactRef}"
 echo "Global options: " "${GLOBAL_ARGS}"
