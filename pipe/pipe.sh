@@ -64,8 +64,8 @@ fi
 if [ $dbRepository ];then
  ARGS="$ARGS --db-repository $dbRepository"
 fi
-if [ $JavaDBRepository ];then
- ARGS="$ARGS --java-db-repository $JavaDBRepository"
+if [ $javaDBRepository ];then
+ ARGS="$ARGS --java-db-repository $javaDBRepository"
 fi
 
 echo "Running trivy with options: ${ARGS}" "${artifactRef}"
