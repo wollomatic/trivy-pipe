@@ -1,6 +1,6 @@
 # Trivy Pipe
 
-> [Bitbucket Pipeline](https://bitbucket.org/product/features/pipelines/) for [Trivy](https://github.com/aquasecurity/trivy)
+> This is a maintained fork of the abandoned original [Bitbucket Pipeline](https://bitbucket.org/product/features/pipelines/) for [Trivy](https://github.com/aquasecurity/trivy)
 
 ## Usage
 
@@ -8,7 +8,7 @@
 
 ```yaml
 image: 
-    name: atlassian/default-image:2
+    name: atlassian/default-image:4
 
 pipelines:
   default:
@@ -16,7 +16,7 @@ pipelines:
         service:
           docker
         script:
-        - pipe: aquasecurity/trivy-pipe:latest
+        - pipe: docker://wollomatic/trivy-pipe:latest
           variables:
             imageRef: 'docker.io/my-organization/my-app:${{ github.sha }}'
             format: 'table'
@@ -24,6 +24,7 @@ pipelines:
             ignoreUnfixed: true
             vulnType: 'os,library'
             severity: 'CRITICAL,HIGH'
+#            dbRepository: "public.ecr.aws/aquasecurity/trivy-db:2" # uncomment this if needed
 ```
 
 ### Using Trivy to scan your Git repo
@@ -31,7 +32,7 @@ It's also possible to scan your git repos with Trivy's built-in repo scan. This 
 
 ```yaml
 image: 
-    name: atlassian/default-image:2
+    name: atlassian/default-image:4
 
 pipelines:
   default:
@@ -39,7 +40,7 @@ pipelines:
         service:
           docker
         script:
-          - pipe: aquasecurity/trivy-pipe:latest
+          - pipe: docker://wollomatic/trivy-pipe:latest
             variables:
               scanType: 'fs'
               ignoreUnfixed: true
@@ -54,7 +55,7 @@ It's also possible to scan your IaC repos with Trivy's built-in repo scan. This 
 
 ```yaml
 image:
-  name: atlassian/default-image:2
+  name: atlassian/default-image:4
 
 pipelines:
   default:
@@ -62,7 +63,7 @@ pipelines:
         services:
           - docker
         script:
-          - pipe: aquasec/trivy-pipe:latest
+          - pipe: docker://wollomatic/trivy-pipe:latest
             variables:
               scanType: "config"
               hideProgress: "false"
@@ -80,7 +81,7 @@ Docker Hub needs `TRIVY_USERNAME` and `TRIVY_PASSWORD`.
 You don't need to set ENV vars when downloading from a public repository.
 ```yaml
 image:
-  name: atlassian/default-image:2
+  name: atlassian/default-image:4
 
 pipelines:
   default:
@@ -88,7 +89,7 @@ pipelines:
         services:
           - docker
         script:
-          - pipe: aquasec/trivy-pipe:latest
+          - pipe: docker://wollomatic/trivy-pipe:latest
             variables:
               imageRef: 'docker.io/my-organization/my-app:${{ github.sha }}'
               format: 'template'
@@ -105,7 +106,7 @@ You can use [AWS CLI's ENV Vars][env-var].
 [env-var]: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html
 ```yaml
 image: 
-    name: atlassian/default-image:2
+    name: atlassian/default-image:4
 
 pipelines:
   default:
@@ -113,7 +114,7 @@ pipelines:
         services:
           - docker
         script:
-          - pipe: aquasec/trivy-pipe:latest
+          - pipe: docker://wollomatic/trivy-pipe:latest
             variables:
               imageRef: 'aws_account_id.dkr.ecr.region.amazonaws.com/imageName:${{ github.sha }}'
               format: 'template'
@@ -131,7 +132,7 @@ Trivy uses Google Cloud SDK. You don't need to install `gcloud` command.
 If you want to use target project's repository, you can set it via `GOOGLE_APPLICATION_CREDENTIAL`.
 ```yaml
 image: 
-    name: atlassian/default-image:2
+    name: atlassian/default-image:4
 
 pipelines:
   default:
@@ -139,7 +140,7 @@ pipelines:
         services:
           - docker
         script:
-          - pipe: aquasec/trivy-pipe:latest
+          - pipe: docker://wollomatic/trivy-pipe:latest
             variables:
               imageRef: 'docker.io/my-organization/my-app:${{ github.sha }}'
               format: 'template'
@@ -153,7 +154,7 @@ BasicAuth server needs `TRIVY_USERNAME` and `TRIVY_PASSWORD`.
 if you want to use 80 port, use NonSSL `TRIVY_NON_SSL=true`
 ```yaml
 image: 
-    name: atlassian/default-image:2
+    name: atlassian/default-image:4
 
 pipelines:
   default:
@@ -161,7 +162,7 @@ pipelines:
         services:
           - docker
         script:
-          - pipe: aquasec/trivy-pipe:latest
+          - pipe: docker://wollomatic/trivy-pipe:latest
             variables:
               imageRef: 'docker.io/my-organization/my-app:${{ github.sha }}'
               format: 'template'
