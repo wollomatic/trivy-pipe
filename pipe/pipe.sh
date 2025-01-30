@@ -38,6 +38,10 @@ if [ $vulnType ] && [ "$scanType" != "config" ];then
   ARGS="$ARGS --vuln-type $vulnType"
   SARIF_ARGS="$SARIF_ARGS --vuln-type $vulnType"
 fi
+if [ $pkgTypes ] && [ "$scanType" != "config" ];then
+  ARGS="$ARGS --pkg-types $pkgTypes"
+  SARIF_ARGS="$SARIF_ARGS --pkg-types $pkgTypes"
+fi
 if [ $severity ];then
   ARGS="$ARGS --severity $severity"
 fi

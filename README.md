@@ -22,7 +22,7 @@ pipelines:
             format: 'table'
             exitCode: '1'
             ignoreUnfixed: true
-            vulnType: 'os,library'
+            pkgTypes: 'os,library'
             severity: 'CRITICAL,HIGH'
 #            dbRepository: "public.ecr.aws/aquasecurity/trivy-db:2" # uncomment this if needed
 ```
@@ -189,7 +189,8 @@ Following inputs can be used as `step.with` keys:
 | `output`           | String   |                                    | Save results to a file                                                                 |
 | `exitCode`         | String   | `0`                                | Exit code when specified vulnerabilities are found                                     |
 | `ignoreUnfixed`    | Boolean  | false                              | Ignore unpatched/unfixed vulnerabilities                                               |
-| `vulnType`         | String   | `os,library`                       | Vulnerability types (os,library)                                                       |
+| `vulnType`         | String   |                                    | Vulnerability types (os,library) (deprecated, use pkgTypes instead)                    |
+| `pkgTypes`         | String   | `os,library`                       | list of package types (os,library) (os,library)                                        |
 | `severity`         | String   | `UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL` | Severities of vulnerabilities to scanned for and displayed                             |
 | `skipDirs`         | String   |                                    | Comma separated list of directories where traversal is skipped                         |
 | `cacheDir`         | String   |                                    | Cache directory                                                                        |
