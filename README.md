@@ -24,6 +24,8 @@ pipelines:
             ignoreUnfixed: true
             pkgTypes: 'os,library'
             severity: 'CRITICAL,HIGH'
+            disableMetrics: 'true'
+            skipVersionCheck: 'true'
 #            dbRepository: "public.ecr.aws/aquasecurity/trivy-db:2" # uncomment this if needed
 ```
 
@@ -48,6 +50,8 @@ pipelines:
               template: '@/contrib/sarif.tpl'
               output: 'trivy-results.sarif'
               severity: 'CRITICAL'
+              disableMetrics: 'true'
+              skipVersionCheck: 'true'
 ```
 
 ### Using Trivy to scan Infrastucture as Code
@@ -71,6 +75,8 @@ pipelines:
               exitCode: 1
               ignoreUnfixed: "true"
               severity: "CRITICAL,HIGH"
+              disableMetrics: 'true'
+              skipVersionCheck: 'true'
 ```
 
 ### Using Trivy to scan your private registry
@@ -97,6 +103,8 @@ pipelines:
               output: 'trivy-results.sarif'
               TRIVY_USERNAME: Username
               TRIVY_PASSWORD: Password  
+              disableMetrics: 'true'
+              skipVersionCheck: 'true'
 ```
 
 #### AWS ECR (Elastic Container Registry)
@@ -123,7 +131,8 @@ pipelines:
               AWS_ACCESS_KEY_ID: key_id
               AWS_SECRET_ACCESS_KEY: access_key
               AWS_DEFAULT_REGION: us-west-2
-
+              disableMetrics: 'true'
+              skipVersionCheck: 'true'
 ```
 
 #### GCR (Google Container Registry)
@@ -147,6 +156,8 @@ pipelines:
               template: '@/contrib/sarif.tpl'
               output: 'trivy-results.sarif'
               GOOGLE_APPLICATION_CREDENTIAL: /path/to/credential.json
+              disableMetrics: 'true'
+              skipVersionCheck: 'true'
 ```
 
 #### Self-Hosted
@@ -170,6 +181,8 @@ pipelines:
               output: 'trivy-results.sarif'
               TRIVY_USERNAME: Username
               TRIVY_PASSWORD: Password   
+              disableMetrics: 'true'
+              skipVersionCheck: 'true'
 ```
 
 ## Customizing
@@ -196,8 +209,11 @@ Following inputs can be used as `step.with` keys:
 | `cacheDir`         | String   |                                    | Cache directory                                                                        |
 | `timeout`          | String   | `2m0s`                             | Scan timeout duration                                                                  |
 | `ignorePolicy`     | String   |                                    | Filter vulnerabilities with OPA rego language                                          |
+| `hideProgress`     | Boolean  | false                              | suppress progress bar                                                                  |
 | `dbRepository`     | String   |                                    | vulnerability DB repository                                                            |
 | `javaDBRepository` | String   |                                    | vulnerability Java index DB repository                                                 |
+| `disableMetrics`   | Boolean  | false                              | disable telemetry introduced in Trivy 0.63.0                                           |
+| `skipVersionCheck` | Boolean  | false                              | disable version check introduced in Trivy 0.63.0                                       |
 
 [license]: https://github.com/aquasecurity/trivy-pipe/blob/master/LICENSE
 [license-img]: https://img.shields.io/github/license/aquasecurity/trivy-pipe

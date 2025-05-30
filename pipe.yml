@@ -67,7 +67,7 @@ variables:
   - name: hideProgress
     description: 'hide progress output'
     required: false
-    default: true
+    default: 'false'
   - name: dbRepository
     description: 'vulnerability DB repository'
     required: false
@@ -76,6 +76,18 @@ variables:
     description: 'vulnerability Java Index DB repository'
     required: false
     default: ''
+  - name: javaDBRepository
+    description: 'vulnerability Java Index DB repository'
+    required: false
+    default: ''
+  - name: disableMetrics
+    description: 'disable telemetry introduced in Trivy 0.63.0'
+    required: false
+    default: 'false'
+  - name: skipVersionCheck
+    description: 'disable version check introduced in Trivy 0.63.0'
+    required: false
+    default: 'false'
 
 repository: https://github.com/wollomatic/trivy-pipe
 maintainer: 

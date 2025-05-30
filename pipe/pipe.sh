@@ -71,6 +71,12 @@ fi
 if [ $javaDBRepository ];then
  ARGS="$ARGS --java-db-repository $javaDBRepository"
 fi
+if [ "$disableMetrics" == "true" ];then
+  ARGS="$ARGS --disable-metrics"
+fi
+if [ "$skipVersionCheck" == "true" ];then
+  ARGS="$ARGS --skip-version-check"
+fi
 
 echo "Running trivy with options: ${ARGS}" "${artifactRef}"
 echo "Global options: " "${GLOBAL_ARGS}"
