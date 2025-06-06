@@ -71,8 +71,8 @@ fi
 if [ $javaDBRepository ];then
  ARGS="$ARGS --java-db-repository $javaDBRepository"
 fi
-if [ "$disableMetrics" == "true" ];then
-  ARGS="$ARGS --disable-metrics"
+if [ "$disableTelemetry" == "true" ];then
+  ARGS="$ARGS --disable-telemetry"
 fi
 if [ "$skipVersionCheck" == "true" ];then
   ARGS="$ARGS --skip-version-check"

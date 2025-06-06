@@ -24,7 +24,7 @@ pipelines:
             ignoreUnfixed: true
             pkgTypes: 'os,library'
             severity: 'CRITICAL,HIGH'
-            disableMetrics: 'true'
+            disableTelemetry: 'true'
             skipVersionCheck: 'true'
 #            dbRepository: "public.ecr.aws/aquasecurity/trivy-db:2" # uncomment this if needed
 ```
@@ -50,7 +50,7 @@ pipelines:
               template: '@/contrib/sarif.tpl'
               output: 'trivy-results.sarif'
               severity: 'CRITICAL'
-              disableMetrics: 'true'
+              disableTelemetry: 'true'
               skipVersionCheck: 'true'
 ```
 
@@ -75,7 +75,7 @@ pipelines:
               exitCode: 1
               ignoreUnfixed: "true"
               severity: "CRITICAL,HIGH"
-              disableMetrics: 'true'
+              disableTelemetry: 'true'
               skipVersionCheck: 'true'
 ```
 
@@ -103,7 +103,7 @@ pipelines:
               output: 'trivy-results.sarif'
               TRIVY_USERNAME: Username
               TRIVY_PASSWORD: Password  
-              disableMetrics: 'true'
+              disableTelemetry: 'true'
               skipVersionCheck: 'true'
 ```
 
@@ -131,7 +131,7 @@ pipelines:
               AWS_ACCESS_KEY_ID: key_id
               AWS_SECRET_ACCESS_KEY: access_key
               AWS_DEFAULT_REGION: us-west-2
-              disableMetrics: 'true'
+              disableTelemetry: 'true'
               skipVersionCheck: 'true'
 ```
 
@@ -156,7 +156,7 @@ pipelines:
               template: '@/contrib/sarif.tpl'
               output: 'trivy-results.sarif'
               GOOGLE_APPLICATION_CREDENTIAL: /path/to/credential.json
-              disableMetrics: 'true'
+              disableTelemetry: 'true'
               skipVersionCheck: 'true'
 ```
 
@@ -181,7 +181,7 @@ pipelines:
               output: 'trivy-results.sarif'
               TRIVY_USERNAME: Username
               TRIVY_PASSWORD: Password   
-              disableMetrics: 'true'
+              disableTelemetry: 'true'
               skipVersionCheck: 'true'
 ```
 
@@ -191,29 +191,29 @@ pipelines:
 
 Following inputs can be used as `step.with` keys:
 
-| Name               | Type     | Default                            | Description                                                                            |
-|--------------------|----------|------------------------------------|----------------------------------------------------------------------------------------|
-| `scanType`         | String   | `image`                            | Scan type, e.g. `image` or `fs`                                                        |
-| `input`            | String   |                                    | Tar reference, e.g. `alpine-latest.tar`                                                |
-| `imageRef`         | String   |                                    | Image reference, e.g. `alpine:3.10.2`                                                  |
-| `scanRef`          | String   |                                    | Scan reference, e.g. `.`                                                               |
-| `format`           | String   | `table`                            | Output format (`table`, `json`, `template`)                                            |
-| `template`         | String   |                                    | Output template (`@/contrib/sarif.tpl`, `@/contrib/gitlab.tpl`, `@/contrib/junit.tpl`) |
-| `output`           | String   |                                    | Save results to a file                                                                 |
-| `exitCode`         | String   | `0`                                | Exit code when specified vulnerabilities are found                                     |
-| `ignoreUnfixed`    | Boolean  | false                              | Ignore unpatched/unfixed vulnerabilities                                               |
-| `vulnType`         | String   |                                    | Vulnerability types (os,library) (deprecated, use pkgTypes instead)                    |
-| `pkgTypes`         | String   | `os,library`                       | list of package types (os,library) (os,library)                                        |
-| `severity`         | String   | `UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL` | Severities of vulnerabilities to scanned for and displayed                             |
-| `skipDirs`         | String   |                                    | Comma separated list of directories where traversal is skipped                         |
-| `cacheDir`         | String   |                                    | Cache directory                                                                        |
-| `timeout`          | String   | `2m0s`                             | Scan timeout duration                                                                  |
-| `ignorePolicy`     | String   |                                    | Filter vulnerabilities with OPA rego language                                          |
-| `hideProgress`     | Boolean  | false                              | suppress progress bar                                                                  |
-| `dbRepository`     | String   |                                    | vulnerability DB repository                                                            |
-| `javaDBRepository` | String   |                                    | vulnerability Java index DB repository                                                 |
-| `disableMetrics`   | Boolean  | false                              | disable telemetry introduced in Trivy 0.63.0                                           |
-| `skipVersionCheck` | Boolean  | false                              | disable version check introduced in Trivy 0.63.0                                       |
+| Name                | Type     | Default                            | Description                                                                            |
+|---------------------|----------|------------------------------------|----------------------------------------------------------------------------------------|
+| `scanType`          | String   | `image`                            | Scan type, e.g. `image` or `fs`                                                        |
+| `input`             | String   |                                    | Tar reference, e.g. `alpine-latest.tar`                                                |
+| `imageRef`          | String   |                                    | Image reference, e.g. `alpine:3.10.2`                                                  |
+| `scanRef`           | String   |                                    | Scan reference, e.g. `.`                                                               |
+| `format`            | String   | `table`                            | Output format (`table`, `json`, `template`)                                            |
+| `template`          | String   |                                    | Output template (`@/contrib/sarif.tpl`, `@/contrib/gitlab.tpl`, `@/contrib/junit.tpl`) |
+| `output`            | String   |                                    | Save results to a file                                                                 |
+| `exitCode`          | String   | `0`                                | Exit code when specified vulnerabilities are found                                     |
+| `ignoreUnfixed`     | Boolean  | false                              | Ignore unpatched/unfixed vulnerabilities                                               |
+| `vulnType`          | String   |                                    | Vulnerability types (os,library) (deprecated, use pkgTypes instead)                    |
+| `pkgTypes`          | String   | `os,library`                       | list of package types (os,library) (os,library)                                        |
+| `severity`          | String   | `UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL` | Severities of vulnerabilities to scanned for and displayed                             |
+| `skipDirs`          | String   |                                    | Comma separated list of directories where traversal is skipped                         |
+| `cacheDir`          | String   |                                    | Cache directory                                                                        |
+| `timeout`           | String   | `2m0s`                             | Scan timeout duration                                                                  |
+| `ignorePolicy`      | String   |                                    | Filter vulnerabilities with OPA rego language                                          |
+| `hideProgress`      | Boolean  | false                              | suppress progress bar                                                                  |
+| `dbRepository`      | String   |                                    | vulnerability DB repository                                                            |
+| `javaDBRepository`  | String   |                                    | vulnerability Java index DB repository                                                 |
+| `disableTelemetry`  | Boolean  | false                              | disable telemetry introduced in Trivy 0.63.0                                           |
+| `skipVersionCheck`  | Boolean  | false                              | disable version check introduced in Trivy 0.63.0                                       |
 
 [license]: https://github.com/aquasecurity/trivy-pipe/blob/master/LICENSE
 [license-img]: https://img.shields.io/github/license/aquasecurity/trivy-pipe

@@ -80,7 +80,7 @@ variables:
     description: 'vulnerability Java Index DB repository'
     required: false
     default: ''
-  - name: disableMetrics
+  - name: disableTelemetry
     description: 'disable telemetry introduced in Trivy 0.63.0'
     required: false
     default: 'false'
