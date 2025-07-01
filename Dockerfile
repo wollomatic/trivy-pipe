@@ -1,4 +1,4 @@
-FROM aquasec/trivy:0.63.0
+FROM aquasec/trivy:0.64.0
 
 COPY pipe /
 
