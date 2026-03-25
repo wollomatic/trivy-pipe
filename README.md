@@ -2,6 +2,12 @@
 
 > This is a maintained fork of the abandoned original [Bitbucket Pipeline](https://bitbucket.org/product/features/pipelines/) for [Trivy](https://github.com/aquasecurity/trivy)
 
+### Trivy Security incident GHSA-69fq-xp46-6x23: wollomatic/trivy-pipe is not affected
+
+see https://github.com/aquasecurity/trivy/discussions/10425
+
+`wollomatic/trivy-pipe` uses v0.69.3, which is not affected.
+
 ## Usage
 
 ### Workflow
