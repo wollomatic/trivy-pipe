@@ -88,7 +88,7 @@ returnCode=$?
 # This is a feature, not a bug :)
 if [[ ${template} == *"sarif"* ]]; then
   echo "Building SARIF report with options: ${SARIF_ARGS}" "${artifactRef}"
-  trivy --quiet ${scanType} --format template --template ${template} --output ${output} $SARIF_ARGS ${artifactRef} $BITBUCKET_CLONE_DIR
+  trivy --quiet ${scanType} --format template --template ${template} --output ${output} $SARIF_ARGS ${artifactRef}
 fi
 
 exit $returnCode
