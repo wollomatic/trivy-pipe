@@ -52,8 +52,7 @@ pipelines:
             variables:
               scanType: 'fs'
               ignoreUnfixed: 'true'
-              format: 'template'
-              template: '@/contrib/sarif.tpl'
+              format: 'sarif'
               output: 'trivy-results.sarif'
               severity: 'CRITICAL'
               disableTelemetry: 'true'
