@@ -77,7 +77,7 @@ pipelines:
               scanType: 'config'
               hideProgress: 'false'
               format: 'table'
-              exitCode: 1
+              exitCode: '1'
               ignoreUnfixed: 'true'
               severity: 'CRITICAL,HIGH'
               disableTelemetry: 'true'
