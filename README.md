@@ -13,7 +13,7 @@ see https://github.com/aquasecurity/trivy/discussions/10425
 ### Workflow
 
 ```yaml
-image: 
+image:
     name: atlassian/default-image:4
 
 pipelines:
@@ -27,7 +27,7 @@ pipelines:
             imageRef: 'docker.io/my-organization/my-app:${{ github.sha }}'
             format: 'table'
             exitCode: '1'
-            ignoreUnfixed: true
+            ignoreUnfixed: 'true'
             pkgTypes: 'os,library'
             severity: 'CRITICAL,HIGH'
             disableTelemetry: 'true'
@@ -51,7 +51,7 @@ pipelines:
           - pipe: docker://wollomatic/trivy-pipe:latest
             variables:
               scanType: 'fs'
-              ignoreUnfixed: true
+              ignoreUnfixed: 'true'
               format: 'template'
               template: '@/contrib/sarif.tpl'
               output: 'trivy-results.sarif'
@@ -75,12 +75,12 @@ pipelines:
         script:
           - pipe: docker://wollomatic/trivy-pipe:latest
             variables:
-              scanType: "config"
-              hideProgress: "false"
-              format: "table"
+              scanType: 'config'
+              hideProgress: 'false'
+              format: 'table'
               exitCode: 1
-              ignoreUnfixed: "true"
-              severity: "CRITICAL,HIGH"
+              ignoreUnfixed: 'true'
+              severity: 'CRITICAL,HIGH'
               disableTelemetry: 'true'
               skipVersionCheck: 'true'
 ```
@@ -104,11 +104,10 @@ pipelines:
           - pipe: docker://wollomatic/trivy-pipe:latest
             variables:
               imageRef: 'docker.io/my-organization/my-app:${{ github.sha }}'
-              format: 'template'
-              template: '@/contrib/sarif.tpl'
+              format: 'sarif'
               output: 'trivy-results.sarif'
               TRIVY_USERNAME: Username
-              TRIVY_PASSWORD: Password  
+              TRIVY_PASSWORD: Password
               disableTelemetry: 'true'
               skipVersionCheck: 'true'
 ```
@@ -131,8 +130,7 @@ pipelines:
           - pipe: docker://wollomatic/trivy-pipe:latest
             variables:
               imageRef: 'aws_account_id.dkr.ecr.region.amazonaws.com/imageName:${{ github.sha }}'
-              format: 'template'
-              template: '@/contrib/sarif.tpl'
+              format: 'sarif'
               output: 'trivy-results.sarif'
               AWS_ACCESS_KEY_ID: key_id
               AWS_SECRET_ACCESS_KEY: access_key
@@ -158,8 +156,7 @@ pipelines:
           - pipe: docker://wollomatic/trivy-pipe:latest
             variables:
               imageRef: 'docker.io/my-organization/my-app:${{ github.sha }}'
-              format: 'template'
-              template: '@/contrib/sarif.tpl'
+              format: 'sarif'
               output: 'trivy-results.sarif'
               GOOGLE_APPLICATION_CREDENTIAL: /path/to/credential.json
               disableTelemetry: 'true'
@@ -182,8 +179,7 @@ pipelines:
           - pipe: docker://wollomatic/trivy-pipe:latest
             variables:
               imageRef: 'docker.io/my-organization/my-app:${{ github.sha }}'
-              format: 'template'
-              template: '@/contrib/sarif.tpl'
+              format: 'sarif'
               output: 'trivy-results.sarif'
               TRIVY_USERNAME: Username
               TRIVY_PASSWORD: Password   
