@@ -6,7 +6,7 @@
 
 see https://github.com/aquasecurity/trivy/discussions/10425
 
-`wollomatic/trivy-pipe` uses v0.69.3, which is not affected.
+`wollomatic/trivy-pipe` used v0.69.3 until the update to v0.70.0. Both versions are not affected.
 
 ## Usage
 
